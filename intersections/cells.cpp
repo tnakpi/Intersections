@@ -12,6 +12,8 @@ bool Cell::InsertCar(unique_ptr<Car> c) {
 		return false;
 	}
 }
+ОЧЕЧА
+
 
 bool Cell::IsEmpty() {
 	return car == nullptr;
