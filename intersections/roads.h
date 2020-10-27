@@ -26,3 +26,14 @@ enum class Light {
 	Yellow,
 	Green
 };
+
+class TrafficLight {
+public:
+	TrafficLight(size_t d, Light c_state, Light n_state);
+	Light Count();
+private:
+	Light cur_state;
+	Light next_state;
+	size_t counter = 0;
+	size_t delay;
+};

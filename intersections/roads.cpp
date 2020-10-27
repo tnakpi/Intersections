@@ -50,3 +50,20 @@ size_t Lane::MoveCar(size_t idx) {
 bool Lane::InsertCar(queue<Direction> route, int sp, int max_sp) {
 	return cells[0]->InsertCar(make_unique<Car>(direction, route, sp, max_sp));
 }
+
+TrafficLight::TrafficLight(size_t d, Light c_state, Light n_state) : delay(d), cur_state(c_state), next_state(n_state) {
+}
+
+Light TrafficLight::Count() {
+	if (counter == delay - 1) {
+		counter++;
+		return Light::Yellow;
+	}
+	if (counter == delay) {
+		swap(cur_state, next_state);
+		counter = 0;
+	}
+	counter++;
+	return cur_state;
+}
+
