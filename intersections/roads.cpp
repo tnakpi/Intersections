@@ -67,3 +67,25 @@ Light TrafficLight::Count() {
 	return cur_state;
 }
 
+Interchange::Interchange(size_t traffic_light_delay) : traf_h(traffic_light_delay, Light::Red, Light::Green), traf_v(traffic_light_delay, Light::Green, Light::Red) {
+
+}
+
+Interchange::Interchange(std::shared_ptr<Cell> u, std::shared_ptr<Cell> d,
+	std::shared_ptr<Cell> l, std::shared_ptr<Cell>r,
+	size_t traffic_light_delay) : traf_h(traffic_light_delay, Light::Red, Light::Green), traf_v(traffic_light_delay, Light::Green, Light::Red) {
+	grid.resize(4);
+	for (auto& row : grid) {
+		row.resize(4);
+	}
+	grid[1][0] = make_shared<Exit>(l);
+	grid[3][1] = make_shared<Exit>(d);
+	grid[0][2] = make_shared<Exit>(u);
+	grid[2][3] = make_shared<Exit>(r);
+	grid[2][0] = make_shared<IntEntrance>(Direction::Right);
+	grid[3][2] = make_shared<Entrance>(Direction::Up);
+	grid[0][2] = make_shared<Entrance>(Direction::Down);
+	grid[1][3] = make_shared<Entrance>(Direction::Left);
+
+
+}

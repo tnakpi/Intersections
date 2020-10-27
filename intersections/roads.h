@@ -2,7 +2,7 @@
 #include <vector>
 #include <memory>
 
-#include "car.h"
+#include "cars.h"
 #include "cells.h"
 
 
@@ -36,4 +36,18 @@ private:
 	Light next_state;
 	size_t counter = 0;
 	size_t delay;
+};
+
+
+class Interchange {
+public:
+	Interchange(size_t traffic_light_delay = 5);
+	Interchange(std::shared_ptr<Cell> u, std::shared_ptr<Cell> d,
+		std::shared_ptr<Cell> l, std::shared_ptr<Cell>r,
+		size_t traffic_light_delay = 5);
+private:
+	std::vector<std::vector<std::shared_ptr<Cell>>> grid;
+	TrafficLight traf_v, traf_h;
+
+
 };

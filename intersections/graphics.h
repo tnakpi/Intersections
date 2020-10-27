@@ -22,7 +22,7 @@ void PrintLine_v(Lane l)
 
 void Graphics(Lane l)
 {
-		PrintLine(l);
+		PrintLine_h(l);
 		for (size_t i = 0; i < l.get_lenght(); i++)
 		{
 			if (!l.get_vector()[i]->IsEmpty())
@@ -32,5 +32,5 @@ void Graphics(Lane l)
 			else { std::cout << std::setw(2) << " "; }
 		}
 		std::cout << std::endl;
-		PrintLine(l);
+		PrintLine_h(l);
 }
